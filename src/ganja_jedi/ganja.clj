@@ -15,15 +15,19 @@
 (defroutes app-routes
   (GET "/" []
        (splash))
+  (GET "/about" []
+       {:status 200
+        :headers {"Content-Type" "text/plain"}
+        :body "About us ..."})
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 
 (def app
   (wrap-defaults app-routes site-defaults))
 
-;; (defn -main [& [port]]
-;;   (let [port (Integer. (or port (env :port) 6666))]
-;;     (jetty/run-jetty (handler/site #'app) {:port port :join? false})))
+(defn -main [& [port]]
+  (let [port (Integer. (or port (env :port) 6666))]
+    (jetty/run-jetty (handler/site #'app) {:port port :join? false})))
 
 ;; For interactive development:
 ;; (.stop server)
