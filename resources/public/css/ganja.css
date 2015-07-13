@@ -1,0 +1,56 @@
+body {
+    background-image: url('../img/bg.png');
+    background-repeat: repeat;
+    background-color: #000;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar-ganja {
+    background-color: #212121;
+    border-color: #000;
+}
+
+.navbar-ganja-links {
+    color: #fff;
+}
+
+.content {
+    background-color: #212121;
+    padding: 5px;
+    padding-right: 15px;
+    border-radius: 6px;
+}
+
+.page-content {
+    border-radius: 6px;
+    background-color: #efefef;
+    margin: 5px;
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-right: 10px;
+    padding-bottom: 30px;
+    height: 100%;
+    width: 100%;
+}
+
+.page-content h1 {
+    margin-bottom: 20px;
+}
+
+.page-content h3 {
+    padding-left: 15px;
+}
+
+.news-content {
+    padding-left: 30px;
+    padding-right: 50px;
+    padding-bottom: 10px;
+}
+
+footer {
+    color: #bababa;
+    margin-top: 20px;
+    padding-bottom: 40px;
+    padding-top: 20px;
+    text-align: center;
+}

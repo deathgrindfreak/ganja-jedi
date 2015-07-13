@@ -4,6 +4,7 @@
             [compojure.route :as route]
             [clojure.java.io :as io]
             [ring.adapter.jetty :as jetty]
+            [ring.util.response :as resp]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [environ.core :refer [env]]))
 
@@ -14,11 +15,13 @@
 
 (defroutes app-routes
   (GET "/" []
-       (splash))
+       (slurp (io/resource "public/index.html")))
   (GET "/about" []
-       {:status 200
-        :headers {"Content-Type" "text/plain"}
-        :body "About us ..."})
+       (slurp (io/resource "public/about.html")))
+  (GET "/rules" []
+       (slurp (io/resource "public/rules.html")))
+  (GET "/misc" []
+       (slurp (io/resource "public/misc.html")))
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 
