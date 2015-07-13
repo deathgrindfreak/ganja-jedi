@@ -5,6 +5,11 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.banner {
+    max-width: 100%;
+    min-width: 100%;
+}
+
 .navbar-ganja {
     background-color: #212121;
     border-color: #000;
