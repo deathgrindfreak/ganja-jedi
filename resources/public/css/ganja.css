@@ -3,7 +3,7 @@ body {
     background-repeat: repeat;
     background-size: auto;
     background-color: #000;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .banner {
@@ -33,24 +33,21 @@ body {
     margin: 5px;
     padding-top: 10px;
     padding-left: 25px;
-    padding-right: 10px;
+    padding-right: 25px;
     padding-bottom: 30px;
     height: 100%;
     width: 100%;
 }
 
-.page-content h1 {
-    margin-bottom: 20px;
-}
-
 .page-content h3 {
-    padding-left: 15px;
+    margin-top: 25px;
+    margin-bottom: 15px;
 }
 
 .news-content {
-    padding-left: 30px;
-    padding-right: 50px;
-    padding-bottom: 10px;
+    padding: 15px;
+    background-color: #dedede;
+    box-shadow: 5px 5px 5px #444;
 }
 
 footer {
