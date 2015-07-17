@@ -11,13 +11,27 @@ body {
     min-width: 100%;
 }
 
+#navbar {
+    font-size: 1.1em;
+}
+
+nav.navbar {
+    color: #efefef;
+}
+
+#navbar, .container-fluid {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.container-fluid {
+    padding-right: 0;
+    margin-right: 0;
+}
+
 .navbar-ganja {
     background-color: #212121;
     border-color: #000;
-}
-
-.navbar-ganja-links {
-    color: #fff;
 }
 
 .content {
@@ -59,8 +73,15 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-    .container, .navbar, .content, .page-content {
+    .container, #navbar, .content, .page-content {
         width: 100%;
+    }
+    
+    #navbar, .container-fluid {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
     }
 
     .container {
@@ -79,8 +100,13 @@ footer {
         margin-bottom: 0;
     }
 
-    .navbar-brand {
-        float: right;
+    .navbar-header {
+        height: 25px;
+    }
+
+    ul.nav {
+        padding: 0;
+        margin: 5px;
     }
 
     button.navbar-toggle {
