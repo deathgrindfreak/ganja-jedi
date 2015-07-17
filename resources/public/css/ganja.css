@@ -58,12 +58,39 @@ footer {
     text-align: center;
 }
 
-@media (min-width: 768px) {
-    .container {
+@media screen and (max-width: 768px) {
+    .container, .navbar, .content, .page-content {
         width: 100%;
     }
 
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .content, .page-content {
+        border-radius: 0;
+    }
+
     .navbar {
-        width: 100%;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    .navbar-brand {
+        float: right;
+    }
+
+    button.navbar-toggle {
+        float: left;
+        margin-left: 10px;
+        border: none;
+    }
+
+    footer {
+        padding-top: 0;
+        padding-bottom: 10px;
     }
 }
