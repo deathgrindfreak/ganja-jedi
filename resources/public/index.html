@@ -28,7 +28,13 @@
       <nav class="navbar navbar-default navbar-ganja">
         <div class="navbar-login navbar-header pull-right">
           <ul class="nav navbar-nav pull-right">
-            <li><a href="/login" class="navbar-ganja-links">Login</a></li>
+            <li><a href="#" class="login-dropdown-toggle">Login</a>
+              <div class="login-dropdown">
+                <input type="text" name="login-name" class="login-input" placeholder="Village Name"/>
+                <input type="password" name="login-password" class="login-input" placeholder="Password"/>
+                <button>Login</button>
+              </div>
+            </li>
           </ul>
         </div>
         <div class="container-fluid">
@@ -43,9 +49,14 @@
           <div class="navbar-collapse collapse" id="navbar">
             <ul class="nav navbar-nav navbar-left">
               <li><a href="/" class="navbar-ganja-links">Home</a></li>
-              <li><a href="/about" class="navbar-ganja-links">About</a></li>
-              <li><a href="/rules" class="navbar-ganja-links">Rules/Regulations</a></li>
-              <li><a href="/misc" class="navbar-ganja-links">Member Projects</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clan Info<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/about" class="navbar-ganja-links">About</a></li>
+                  <li><a href="/rules" class="navbar-ganja-links">Rules/Regulations</a></li>
+                  <li><a href="/misc" class="navbar-ganja-links">Member Projects</a></li>
+                </ul>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
