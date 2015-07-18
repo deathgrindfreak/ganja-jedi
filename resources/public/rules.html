@@ -26,6 +26,20 @@
       
       <!-- Static navbar -->
       <nav class="navbar navbar-default navbar-ganja">
+        <div class="navbar-login navbar-header pull-right">
+          <ul class="nav navbar-nav pull-right">
+            <li><a class="login-dropdown-toggle" href="#">Login<span class="caret"></span></a>
+              <div class="login-dropdown">
+                <ul class="login-list">
+                  <li><input type="text" name="login-name" class="login-input" placeholder="Village Name"/></li>
+                  <li><input type="password" name="login-password" class="login-input" placeholder="Password"/></li>
+                  <li><button type="button" class="btn">Login</button></li>
+                  <li id="forgot-pass">Forgot your <a href="#">password</a>?</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
         <div class="container-fluid">
           <div class="navbar-header">
             <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
@@ -34,18 +48,23 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a href="/" class="navbar-brand">Home</a>
           </div>
           <div class="navbar-collapse collapse" id="navbar">
-            <ul class="nav navbar-nav">
-              <li><a href="/about" class="navbar-ganja-links">About</a></li>
-              <li class="active"><a href="/rules" class="navbar-ganja-links">Rules/Regulations</a></li>
-              <li><a href="/misc" class="navbar-ganja-links">Member Projects</a></li>
+            <ul class="nav navbar-nav navbar-left">
+              <li><a href="/" class="navbar-ganja-links">Home</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clan Info<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/about" class="navbar-ganja-links">About</a></li>
+                  <li><a href="/rules" class="navbar-ganja-links">Rules/Regulations</a></li>
+                  <li><a href="/misc" class="navbar-ganja-links">Member Projects</a></li>
+                </ul>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
-
+      
       <div class="content">
         <div class="page-content">
           <h1>Clan Rules</h1>
@@ -127,5 +146,6 @@ We welcome suggestions because we constantly seek ways in which to improve.</p>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/ganja.js"></script>
   </body>
 </html>
