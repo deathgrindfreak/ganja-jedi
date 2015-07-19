@@ -163,6 +163,7 @@ footer {
     div#navbar {
         margin: 0;
         width: 100%;
+        border-top: 2px solid #bababa;
     }
     
     ul.login-list button.btn,
@@ -172,16 +173,18 @@ footer {
     }
     
     div.login-dropdown {
-        padding-top: 10px;
         position: static;
         width: 100%;
         float: none;
         border: 0;
+        border-top: 2px solid #bababa;
+        padding-top: 5px;
+        margin-top: 13px;
         -webkit-box-shadow: none;
         box-shadow: none;
     }
 
-    div#login-dropdown-mobile {
+    div.login-dropdown-mobile {
         padding-top: 10px;
     }
     

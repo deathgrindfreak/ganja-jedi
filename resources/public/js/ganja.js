@@ -7,12 +7,12 @@ $(document).ready(function() {
     var alterDropdown = function() {
         if (mq.matches) {
             var drop = $("div.login-dropdown-normal").html();
-            $("div.login-dropdown-normal").remove();
+            $("div.login-dropdown-normal").empty();
             $("div.login-dropdown-mobile").append(drop);
             dropdownSpeed = 350;
         } else {
             var dropm = $("div.login-dropdown-mobile").html();
-            $("div.login-dropdown-mobile").remove();
+            $("div.login-dropdown-mobile").empty();
             $("div.login-dropdown-normal").append(dropm);
             dropdownSpeed = 200;
         }
