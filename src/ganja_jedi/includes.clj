@@ -1,6 +1,6 @@
 (ns ganja-jedi.includes
-  (:require
-   [net.cgrand.enlive-html :as html]))
+  (:require [ring.util.response :as resp]
+            [net.cgrand.enlive-html :as html]))
 
 ;;; Messages displayed randomly in the <title></title> elements on page load
 (def ^:dynamic *title-messages* ["Unite!" "Go Go Ganja Rangers!"
@@ -8,17 +8,18 @@
                                  "VIVA LA GANJA!"])
 
 (defn random-title []
-  (*title-messages* (rand-int (count *title-messages*))))
+  (str "Ganja Jedi: "
+       (*title-messages* (rand-int (count *title-messages*)))))
 
 ;;; Render html
 (defn render [t]
   (apply str t))
 
 (def render-to-response
-  (comp response render))
+  (comp resp/response render))
 
 (defn render-snippet [snp]
-  (apply str (emit* snp)))
+  (apply str (html/emit* snp)))
 
 
 ;;; Templates and snippets
@@ -38,5 +39,4 @@
     [:footer] (html/content footer)))
 
 (defn default-layout [html-src]
-  (render-snippet ((default-template html-src)
-                   (header) (navbar) (footer))))
+  ((default-template html-src) (header) (navbar) (footer)))

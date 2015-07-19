@@ -9,21 +9,11 @@
             [environ.core :refer [env]]
             [ganja-jedi.includes :as inc]))
 
-(defn splash []
-  {:status 200
-   :headers {"Content-Type" "text/plain"}
-   :body "Chris!!!!!!!!!!!"})
-
 (defroutes app-routes
-  ;;(GET "/" [] (slurp (io/resource "public/index.html")))
   (GET "/" [] (inc/default-layout "public/index.html"))
-
-  (GET "/about" []
-       (slurp (io/resource "public/about.html")))
-  (GET "/rules" []
-       (slurp (io/resource "public/rules.html")))
-  (GET "/misc" []
-       (slurp (io/resource "public/misc.html")))
+  (GET "/about" [] (inc/default-layout "public/about.html"))
+  (GET "/rules" [] (inc/default-layout "public/rules.html"))
+  (GET "/misc" [] (inc/default-layout "public/misc.html"))
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 

@@ -83,7 +83,7 @@ nav.navbar {
     z-index: 1000;
     display: none;
     float: left;
-    height: 195px;
+    height: 230px;
     width: 265px;
     padding: 5px 0;
     margin: 2px 0 0;
@@ -110,7 +110,7 @@ ul.login-list li {
     padding: 6px 3px;
 }
 
-ul.login-list input {
+ul.login-list input.login-input {
     width: 230px;
     padding: 5px;
     border-radius: 5px;
@@ -125,15 +125,24 @@ ul.login-list button.btn {
     background-color: #f47921;
 }
 
+ul.login-list input.login-cb {
+    width: 20px;
+    margin: 0;
+}
+
+li#remember-me {
+    clear: both;
+    padding-top: 15px;
+    font-size: .9em;
+}
+
 li#forgot-pass {
-    padding-top: 17px;
     clear: both;
     font-size: .9em;
 }
 
 footer {
     color: #bababa;
-    margin-top: 20px;
     padding-bottom: 40px;
     padding-top: 20px;
     text-align: center;
@@ -156,18 +165,24 @@ footer {
         width: 100%;
     }
     
-    ul.login-list button.btn {
+    ul.login-list button.btn,
+    ul.login-list input.login-input {
         float: none;
         width: 100%;
     }
     
     div.login-dropdown {
+        padding-top: 10px;
         position: static;
         width: 100%;
         float: none;
         border: 0;
         -webkit-box-shadow: none;
         box-shadow: none;
+    }
+
+    div#login-dropdown-mobile {
+        padding-top: 10px;
     }
     
     ul.login-list input {
