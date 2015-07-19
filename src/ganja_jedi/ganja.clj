@@ -6,7 +6,8 @@
             [ring.adapter.jetty :as jetty]
             [ring.util.response :as resp]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-            [environ.core :refer [env]]))
+            [environ.core :refer [env]]
+            [ganja-jedi.includes :as inc]))
 
 (defn splash []
   {:status 200
@@ -14,8 +15,9 @@
    :body "Chris!!!!!!!!!!!"})
 
 (defroutes app-routes
-  (GET "/" []
-       (slurp (io/resource "public/index.html")))
+  ;;(GET "/" [] (slurp (io/resource "public/index.html")))
+  (GET "/" [] (inc/default-layout "public/index.html"))
+
   (GET "/about" []
        (slurp (io/resource "public/about.html")))
   (GET "/rules" []

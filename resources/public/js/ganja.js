@@ -1,4 +1,4 @@
-// Speed for login dropdown
+// Speed and media match for login dropdown
 var dropdownSpeed = 200;
 var mq = window.matchMedia("screen and (max-width: 768px)");
 

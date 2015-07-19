@@ -31,9 +31,12 @@
 (html/defsnippet footer "public/includes/footer.html" [html/root] []
   identity)
 
-(defn default-layout [html-src]
+(defn default-template [html-src]
   (html/deftemplate layout html-src [header navbar footer]
     [:head] (html/content header)
     [:#navbar-root] (html/content navbar)
-    [:footer] (html/content footer))
-  (render-snippet (layout (header) (navbar) (footer))))
+    [:footer] (html/content footer)))
+
+(defn default-layout [html-src]
+  (render-snippet ((default-template html-src)
+                   (header) (navbar) (footer))))
