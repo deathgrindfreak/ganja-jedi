@@ -9,7 +9,9 @@
                  [ring/ring-jetty-adapter "1.3.2"]
                  [ring/ring-defaults "0.1.2"]
                  [enlive "1.1.6"]
-                 [environ "0.5.0"]]
+                 [environ "0.5.0"]
+                 [org.clojure/java.jdbc "0.3.5"]
+                 [postgresql "9.1-901-1.jdbc4"]]
   :min-lein-version "2.0.0"
   :plugins [[lein-ring "0.8.13"]
             [environ/environ.lein "0.2.1"]]

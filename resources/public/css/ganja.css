@@ -15,11 +15,10 @@ body {
     font-size: 1.1em;
 }
 
-ul.nav a.login-dropdown-toggle {
-    color: #bababa;
-}
-
-div#navbar a, div.navbar-login a {
+ul.nav a.login-dropdown-toggle,
+ul.nav a.navbar-ganja-links,
+div#navbar a,
+div.navbar-login a {
     color: #bababa;
 }
 
@@ -119,7 +118,7 @@ ul.login-list input.login-input {
 
 ul.login-list button.btn {
     float: right;
-    padding: 4px 10px;
+    padding: 5px 10px;
     margin-right: 0;
     color: #212121;
     background-color: #f47921;
@@ -139,6 +138,62 @@ li#remember-me {
 li#forgot-pass {
     clear: both;
     font-size: .9em;
+}
+
+#registration-header {
+    padding: 5px;
+}
+
+.registration {
+    width: 100%;
+}
+
+.register-field {
+    display: block;
+    float: left;
+    padding: 10px;
+    height: 100px;
+    width: 100%;
+}
+
+.register-field-textbox {
+    height: 250px;
+}
+
+.register-field input,
+.register-field label{
+    display: block;
+}
+
+input.registration-textbox {
+    text-align: top;
+    padding: 0;
+    height: 200px;
+    width: 500px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #212121;
+}
+
+input.registration-input {
+    width: 400px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #212121;
+}
+
+.registration button.btn {
+    padding: 5px 10px;
+    margin: 5px;
+    margin-right: 0;
+    color: #212121;
+    background-color: #f47921;
+}
+
+.register-button {
+    padding: 5px;
+    margin: 5px;
+    height: 50;
 }
 
 footer {
@@ -186,6 +241,7 @@ footer {
 
     div.login-dropdown-mobile {
         padding-top: 10px;
+        padding-bottom: 5px;
     }
     
     ul.login-list input {
@@ -223,9 +279,23 @@ footer {
         margin-left: 10px;
         border: none;
     }
+    
+    input.registration-input {
+        width: 100%;
+    }
+    
+    input.registration-textbox {
+        width: 100%;
+    }
+    
+    .registration button.btn {
+        width: 100%;
+        padding-left: 0;
+        margin-left: 0;
+    }
 
     footer {
-        padding-top: 0;
+        padding-top: 10px;
         padding-bottom: 10px;
     }
 }

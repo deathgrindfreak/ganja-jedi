@@ -14,6 +14,7 @@
   (GET "/about" [] (inc/default-layout "public/about.html"))
   (GET "/rules" [] (inc/default-layout "public/rules.html"))
   (GET "/misc" [] (inc/default-layout "public/misc.html"))
+  (GET "/register" [] (inc/default-layout "public/register.html"))
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 
