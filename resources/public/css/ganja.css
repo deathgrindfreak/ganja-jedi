@@ -157,7 +157,7 @@ li#forgot-pass {
 }
 
 .register-field-textbox {
-    height: 250px;
+    height: 200px;
 }
 
 .register-field input,
@@ -165,10 +165,11 @@ li#forgot-pass {
     display: block;
 }
 
-input.registration-textbox {
+.registration-textbox {
     text-align: top;
+    resize: none;
     padding: 0;
-    height: 200px;
+    height: 150px;
     width: 500px;
     padding: 5px;
     border-radius: 5px;
@@ -284,7 +285,7 @@ footer {
         width: 100%;
     }
     
-    input.registration-textbox {
+    .registration-textbox {
         width: 100%;
     }
     
