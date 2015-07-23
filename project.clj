@@ -19,6 +19,7 @@
   :ring {:handler ganja-jedi.ganja/app}
   :hooks [environ.leiningen.hooks]
   :uberjar-name "ganjajedi.jar"
+  :repl-options {:timeout 120000}
   :profiles {:production {:env {:production true}}
              :dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                                   [ring-mock "0.1.5"]]}})
