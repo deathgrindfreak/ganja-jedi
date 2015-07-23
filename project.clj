@@ -12,7 +12,8 @@
                  [environ "0.5.0"]
                  [org.clojure/java.jdbc "0.3.5"]
                  [postgresql "9.1-901-1.jdbc4"]
-                 [crypto-password "0.1.3"]]
+                 [crypto-password "0.1.3"]
+                 [org.clojure/data.codec "0.1.0"]]
   :min-lein-version "2.0.0"
   :plugins [[lein-ring "0.8.13"]
             [environ/environ.lein "0.2.1"]]
@@ -21,5 +22,6 @@
   :uberjar-name "ganjajedi.jar"
   :repl-options {:timeout 120000}
   :profiles {:production {:env {:production true}}
-             :dev {:dependencies [[javax.servlet/servlet-api "2.5"]
+             :dev {:defaults [:base :system :user :provided :dev :local-dev]
+                   :dependencies [[javax.servlet/servlet-api "2.5"]
                                   [ring-mock "0.1.5"]]}})

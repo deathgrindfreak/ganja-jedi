@@ -1,4 +1,4 @@
-(ns ganja-jedi.includes
+(ns ganja-jedi.layout
   (:require [ring.util.response :as resp]
             [net.cgrand.enlive-html :as html]))
 
@@ -40,3 +40,13 @@
 
 (defn default-layout [html-src]
   ((default-template html-src) (header) (navbar) (footer)))
+
+;; (defn register-template [params]
+;;   (let [{} params]
+;;     (if ()
+;;       (default-template "public/index.html")
+;;       (default-template "public/register.html"))))
+
+(defn register-layout [params]
+  (print params)
+  (default-layout "public/register.html"))

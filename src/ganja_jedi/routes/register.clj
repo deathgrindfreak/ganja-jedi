@@ -1,18 +1,27 @@
 (ns ganja-jedi.routes.register
-  (:require [crypto.password.bcrypt :as pass]))
+  (:require [crypto.password.bcrypt :as pass]
+            [clojure.data.codec.base64 :as b64]
+            [ganja-jedi.db.register :as db]))
 
-(def ^:dynamic *num-bytes* 32)
+
+;;; Password Hashing
+(def ^:dynamic *num-bytes* 43)
 
 (defn gen-salt
   "Generates a password salt using SecureRandom"
   [bytes]
   (let [rand (java.security.SecureRandom/getInstance "SHA1PRNG")
-        buffer (make-array Byte/TYPE bytes)]
-    (.nextBytes rand buffer)
-    (apply str (map char buffer))))
+        salt (make-array Byte/TYPE bytes)]
+    (.nextBytes rand salt)
+    (apply str (map char (b64/encode salt)))))
 
 (defn gen-pass-hash
-  "Generates a hashed password"
-  [pass]
+  "Generates a hashed password and returns the salt and hashed password"
+  [password]
   (let [salt (gen-salt *num-bytes*)]
-    ))
+    [salt (pass/encrypt (str salt password))]))
+
+(defn check-pass
+  "Checks if a password is equal to the hashed version"
+  [salt hash pass]
+  (pass/check (str salt pass) hash))

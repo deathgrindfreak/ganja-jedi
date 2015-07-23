@@ -14,11 +14,20 @@
           <div class="news-content">
             <div id="registration-header">
               <p>Notice In order to register for the site, you must be a member of the Ganja Jedi clan.  Registration is thus not automatic and is strictly subject to the approval of our clan leaders.</p>
-              <p>This rule can of course be waved, but you'll probably need to know one of the members personally.  If this applies to you, please make sure you fill out the "Message to the Admins" portion of the form show below.</p>
+              <p>This rule can of course be waved, but you'll probably need to know one of the members personally.  If this applies to you, please make sure you fill out the "A message to our overlords" portion of the form show below.</p>
             </div>
             <form name="registration-form" action="" method="post">
               <div class="registration">
                 <fieldset>
+                  <div class="register-field-cb">
+                    <label for="register-status">Special Clan status <span class="warning">* Note that this is of course subject to admin approval.</span></label>
+                    <select name="register-status">
+                      <option value="None">None</option>
+                      <option value="Elder">Elder</option>
+                      <option value="Coleader">Co-Leader</option>
+                      <option value="Leader">Leader</option>
+                    </select>
+                  </div>
                   <div class="register-field">
                     <label for="register-email">Your email address</label>
                     <input type="text" name="register-email" class="registration-input" placeholder="Email Address"/>
@@ -36,7 +45,7 @@
                     <textarea name="admin-message" class="registration-textbox" placeholder="Message..."></textarea>
                   </div>
                   <div class="register-button">
-                    <button type="button" class="btn">Register</button>
+                    <button type="submit" class="btn">Register</button>
                   </div>
                 </fieldset>
               </div>

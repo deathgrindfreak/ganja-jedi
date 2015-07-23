@@ -7,14 +7,14 @@
             [ring.util.response :as resp]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [environ.core :refer [env]]
-            [ganja-jedi.includes :as inc]))
+            [ganja-jedi.layout :as layout]))
 
 (defroutes app-routes
-  (GET "/" [] (inc/default-layout "public/index.html"))
-  (GET "/about" [] (inc/default-layout "public/about.html"))
-  (GET "/rules" [] (inc/default-layout "public/rules.html"))
-  (GET "/misc" [] (inc/default-layout "public/misc.html"))
-  (GET "/register" [] (inc/default-layout "public/register.html"))
+  (GET "/" [] (layout/default-layout "public/index.html"))
+  (GET "/about" [] (layout/default-layout "public/about.html"))
+  (GET "/rules" [] (layout/default-layout "public/rules.html"))
+  (GET "/misc" [] (layout/default-layout "public/misc.html"))
+  (GET "/register" {params :params} (layout/register-layout params))
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 
