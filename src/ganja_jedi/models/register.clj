@@ -1,4 +1,4 @@
-(ns ganja-jedi.db.register
+(ns ganja-jedi.routes.register
   (:require [clojure.java.jdbc :as jdbc]
             [environ.core :refer [env]]))
 

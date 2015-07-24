@@ -1,4 +1,4 @@
-(ns ganja-jedi.layout
+(ns ganja-jedi.views.layout
   (:require [ring.util.response :as resp]
             [net.cgrand.enlive-html :as html]))
 
