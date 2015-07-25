@@ -20,29 +20,30 @@
               <div class="registration">
                 <fieldset>
                   <div class="register-field-cb">
-                    <label for="register-status">Special Clan status <span class="warning">* Note that this is of course subject to admin approval.</span></label>
-                    <select name="register-status">
-                      <option value="None">None</option>
-                      <option value="Elder">Elder</option>
-                      <option value="Coleader">Co-Leader</option>
-                      <option value="Leader">Leader</option>
+                    <label for="status">Special Clan status <span class="warning">* Note that this is subject to admin approval.</span></label>
+                    <select name="status">
+                      <option value="none">None</option>
+                      <option value="elder">Elder</option>
+                      <option value="coleader">Co-Leader</option>
+                      <option value="leader">Leader</option>
+                      <option value="admin">Admin</option>
                     </select>
                   </div>
                   <div class="register-field">
-                    <label for="register-email">Your email address</label>
-                    <input type="text" name="register-email" class="registration-input" placeholder="Email Address"/>
+                    <label for="email">Your email address</label>
+                    <input type="text" name="email" class="registration-input" placeholder="Email Address" />
                   </div>
                   <div class="register-field">
-                    <label for="register-name">Your Clash of Clans village name.</label>
-                    <input type="text" name="register-name" class="registration-input" placeholder="Village Name"/>
+                    <label for="village">Your Clash of Clans village name.</label>
+                    <input type="text" name="village" class="registration-input" placeholder="Village Name" />
                   </div>
                   <div class="register-field">
-                    <label for="register-password">Your password.</label>
-                    <input type="password" name="register-password" class="registration-input" placeholder="Password"/>
+                    <label for="pass">Your password.</label>
+                    <input type="password" name="pass" class="registration-input" placeholder="Password" />
                   </div>
                   <div class="register-field register-field-textbox">
-                    <label for="admin-message">A message to our overlords.</label>
-                    <textarea name="admin-message" class="registration-textbox" placeholder="Message..."></textarea>
+                    <label for="message">A message to our overlords.</label>
+                    <textarea name="message" class="registration-textbox" placeholder="Message..."></textarea>
                   </div>
                   <div class="register-button">
                     <button type="submit" class="btn">Register</button>

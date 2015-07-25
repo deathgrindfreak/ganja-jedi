@@ -1,27 +1,20 @@
 (ns ganja-jedi.routes.register
-  (:require [crypto.password.bcrypt :as pass]
-            [clojure.data.codec.base64 :as b64]
-            [ganja-jedi.db.register :as db]))
+  (:require [compojure.core :refer :all]
+            [ganja-jedi.models.register :as db]
+            [ganja-jedi.layout :as layout]))
+
+;;; HTML
+
+(defn register-layout [params]
+  (let [{:keys [status email village pass message]} params]
+    (println params)
+    (if (some #(nil? %) (vals params))
+      (layout/default-layout "public/register.html")
+      (layout/default-layout "public/register.html"))))
 
 
-;;; Password Hashing
-(def ^:dynamic *num-bytes* 43)
+;;; Routes
 
-(defn gen-salt
-  "Generates a password salt using SecureRandom"
-  [bytes]
-  (let [rand (java.security.SecureRandom/getInstance "SHA1PRNG")
-        salt (make-array Byte/TYPE bytes)]
-    (.nextBytes rand salt)
-    (apply str (map char (b64/encode salt)))))
-
-(defn gen-pass-hash
-  "Generates a hashed password and returns the salt and hashed password"
-  [password]
-  (let [salt (gen-salt *num-bytes*)]
-    [salt (pass/encrypt (str salt password))]))
-
-(defn check-pass
-  "Checks if a password is equal to the hashed version"
-  [salt hash pass]
-  (pass/check (str salt pass) hash))
+(defroutes register-routes
+  (GET "/register" [] (layout/default-layout "public/register.html"))
+  (POST "/register" request (register-layout (:params request))))

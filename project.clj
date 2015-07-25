@@ -17,7 +17,7 @@
   :min-lein-version "2.0.0"
   :plugins [[lein-ring "0.8.13"]
             [environ/environ.lein "0.2.1"]]
-  :ring {:handler ganja-jedi.ganja/app}
+  :ring {:handler ganja-jedi.handler/app}
   :hooks [environ.leiningen.hooks]
   :uberjar-name "ganjajedi.jar"
   :repl-options {:timeout 120000}
