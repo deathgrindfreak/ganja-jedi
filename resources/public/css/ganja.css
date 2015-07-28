@@ -19,6 +19,10 @@ p {
     font-size: .9em;
 }
 
+button {
+    font-size: .9em;
+}
+
 .banner {
     max-width: 100%;
     min-width: 100%;
@@ -79,9 +83,8 @@ nav.navbar {
 }
 
 .news-content {
-    padding: 15px;
-    background-color: #dedede;
-    box-shadow: 5px 5px 5px #444;
+    padding: 15px 5px;
+    border-top: 3px solid #cdcdcd;
 }
 
 .dropdown-menu {
@@ -166,54 +169,30 @@ li#forgot-pass {
     font-size: .9em;
 }
 
-.register-field {
-    display: block;
-    float: left;
-    padding: 10px;
-    height: 100px;
-    width: 100%;
+.input-group {
+    margin: 20px 10px;
 }
 
-.register-field-cb {
-    display: block;
-    float: left;
-    margin-top: 10px;
-    padding: 10px;
-    height: 100px;
-    width: 100%;
-}
-
-.register-field-textbox {
-    height: 200px;
-}
-
-.register-field input,
-.register-field label{
+label {
     display: block;
 }
 
-.registration-textbox {
-    text-align: top;
-    resize: none;
-    padding: 0;
-    height: 150px;
-    width: 500px;
-    padding: 5px;
-    border-radius: 5px;
-    color: #212121;
+.form-control.reg-drop {
+    width: 80px;
 }
 
-input.registration-input {
+.form-control.reg-email {
+    width: 300px;
+}
+
+.form-control.reg-area {
     width: 400px;
-    padding: 5px;
-    border-radius: 5px;
-    color: #212121;
+    resize: none;
 }
 
 .registration button.btn {
     padding: 5px 10px;
-    margin: 5px;
-    margin-right: 0;
+    margin: 0;
     color: #212121;
     background-color: #f47921;
 }

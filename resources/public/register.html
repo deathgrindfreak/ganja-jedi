@@ -16,12 +16,12 @@
               <p>Notice In order to register for the site, you must be a member of the Ganja Jedi clan.  Registration is thus not automatic and is strictly subject to the approval of our clan leaders.</p>
               <p>This rule can of course be waved, but you'll probably need to know one of the members personally.  If this applies to you, please make sure you fill out the "A message to our overlords" portion of the form show below.</p>
             </div>
-            <form name="registration-form" action="" method="post">
+            <form name="registration-form" id="registration-form" action="" method="post">
               <div class="registration">
                 <fieldset>
-                  <div class="register-field-cb">
+                  <div class="input-group">
                     <label for="status">Special Clan status <span class="warning">* Note that this is subject to admin approval.</span></label>
-                    <select name="status">
+                    <select name="status" class="form-control reg-drop">
                       <option value="none">None</option>
                       <option value="elder">Elder</option>
                       <option value="coleader">Co-Leader</option>
@@ -29,24 +29,24 @@
                       <option value="admin">Admin</option>
                     </select>
                   </div>
-                  <div class="register-field">
+                  <div class="input-group">
                     <label for="email">Your email address</label>
-                    <input type="text" name="email" class="registration-input" placeholder="Email Address" />
+                    <input type="text" name="email" class="form-control reg-email" placeholder="Email Address" />
                   </div>
-                  <div class="register-field">
+                  <div class="input-group">
                     <label for="village">Your Clash of Clans village name.</label>
-                    <input type="text" name="village" class="registration-input" placeholder="Village Name" />
+                    <input type="text" name="village" class="form-control" placeholder="Village Name" />
                   </div>
-                  <div class="register-field">
+                  <div class="input-group">
                     <label for="pass">Your password.</label>
-                    <input type="password" name="pass" class="registration-input" placeholder="Password" />
+                    <input type="password" name="pass" class="form-control" placeholder="Password" />
                   </div>
-                  <div class="register-field register-field-textbox">
+                  <div class="input-group">
                     <label for="message">A message to our overlords.</label>
-                    <textarea name="message" class="registration-textbox" placeholder="Message..."></textarea>
+                    <textarea name="message" rows="5" class="form-control reg-area" placeholder="Message..."></textarea>
                   </div>
                   <div class="register-button">
-                    <button type="submit" class="btn">Register</button>
+                    <button type="submit" class="btn reg-button">Register</button>
                   </div>
                 </fieldset>
               </div>

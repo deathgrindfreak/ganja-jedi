@@ -1,6 +1,6 @@
 (ns ganja-jedi.routes.register
   (:require [compojure.core :refer :all]
-            [ganja-jedi.models.register :as db]
+            ;[ganja-jedi.models.register :as db]
             [ganja-jedi.layout :as layout]))
 
 ;;; HTML

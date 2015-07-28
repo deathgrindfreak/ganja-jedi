@@ -2,8 +2,7 @@
 var dropdownSpeed = 200;
 var mq = window.matchMedia("screen and (max-width: 768px)");
 
-$(document).ready(function() {
-
+$(function() {
     var alterDropdown = function() {
         if (mq.matches) {
             var drop = $("div.login-dropdown-normal").html();
@@ -37,3 +36,30 @@ $(document).ready(function() {
         }
     });
 });
+
+// $(function() {
+//     // Ajax for register page
+//     $('.reg-button').click(function() {
+//         // Array for the inputs
+//         var formInputs = new Array();
+//         // Get the form name
+//         var form = $(this).parent().attr('id');
+//         $('#' + form + ' input').each(function() {
+//             // Get the input value
+//             var inputVal = $(this).val();
+//             // Get the input name
+//             var inputName = $(this).attr('name');
+//             // Add to the array
+//             formInputs[inputName] = inputVal;
+//         });
+//         $.ajax({
+//             url: '/register',
+//             type: 'POST',
+//             data: {
+//                 inputs: formInputs;
+//             },
+//             success: function(data) {
+//             }
+//         });
+//     });
+// });
