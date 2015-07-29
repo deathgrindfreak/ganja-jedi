@@ -15,7 +15,7 @@
                        (jdbc/create-table-ddl :users
                                               [:userid "SERIAL PRIMARY KEY"]
                                               [:enabled "BOOLEAN"]
-                                              [:admin "BOOLEAN"]
+                                              [:special_admin "BOOLEAN"]
                                               [:email "TEXT"]
                                               [:village "TEXT"]
                                               [:elder "BOOLEAN"]

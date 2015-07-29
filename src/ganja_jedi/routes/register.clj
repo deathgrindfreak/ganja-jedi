@@ -1,24 +1,17 @@
 (ns ganja-jedi.routes.register
   (:require [compojure.core :refer :all]
-            ;[ganja-jedi.models.register :as db]
-            [ganja-jedi.layout :as layout]))
+            [ganja-jedi.models.db :as db]
+            [ganja-jedi.views.layout :as layout]
+            [ganja-jedi.views.register :as register]))
 
-;;; HTML
 
-(defn register-layout [params]
-  (let [{:keys [status email village pass message]} params]
-    (println (str "status: " status
-                  "email: " email
-                  "village: " village
-                  "pass: " pass
-                  "message: " message))
-    (if (some #(nil? %) (vals params))
-      (layout/default-layout "public/register.html")
-      (layout/default-layout "public/register.html"))))
-
+(defn validate-registration
+  "Validates the parameters passed in during registration"
+  [params]
+  )
 
 ;;; Routes
 
 (defroutes register-routes
   (GET "/register" [] (layout/default-layout "public/register.html"))
-  (POST "/register" request (register-layout (:params request))))
+  (POST "/register" request (register/register-layout (:params request))))

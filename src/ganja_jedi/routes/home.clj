@@ -1,6 +1,6 @@
 (ns ganja-jedi.routes.home
   (:require [compojure.core :refer :all]
-            [ganja-jedi.layout :as layout]))
+            [ganja-jedi.views.layout :as layout]))
 
 (defroutes home-routes
   (GET "/" [] (layout/default-layout "public/index.html"))
