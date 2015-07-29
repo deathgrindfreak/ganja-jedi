@@ -14,6 +14,10 @@
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 
+;;; TODO create init and destroy functions
+(defn init [])
+(defn destroy [])
+
 (def app
   (-> (routes home-routes
               register-routes

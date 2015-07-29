@@ -39,10 +39,9 @@
 (defn create-tables
   "Creates all tables"
   []
-  (let [table-funs [create-users-table
-                    create-auth-tokens-table]]
-    (jdbc/with-db-connection [db-con *db-url*]
-      (map #(% db-con) table-funs))))
+  (jdbc/with-db-transaction [db-con *db-url*]
+    (create-users-table db-con)
+    (create-auth-tokens-table db-con)))
 
 
 ;;; Register page
