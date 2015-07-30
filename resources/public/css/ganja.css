@@ -67,7 +67,7 @@ nav.navbar {
 
 .page-content {
     border-radius: 6px;
-    background-color: #efefef;
+    background-color: #fff;
     margin: 5px;
     padding-top: 10px;
     padding-left: 25px;
@@ -89,6 +89,31 @@ nav.navbar {
 .news-content {
     padding: 15px 5px;
     border-top: 3px solid #cdcdcd;
+}
+
+.news-form-box {
+    margin: 20px auto;
+    padding: 5px 20px 20px 20px;
+    width: 700px;
+    background-color: #efefef;
+}
+
+.news-form-box-title {
+    padding: 10px;
+    margin: 0 auto;
+    display: table;
+}
+
+.news-form-box-title h3 {
+    display: inline;
+}
+
+.inputGroup {
+    padding: 5px;
+}
+
+.form-control {
+    font-size: 1em;
 }
 
 .dropdown-menu {
@@ -194,11 +219,15 @@ label {
     resize: none;
 }
 
-.registration button.btn {
+.btn {
     padding: 5px 10px;
-    margin: 0;
     color: #212121;
     background-color: #f47921;
+}
+
+.news-btn {
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
 .register-button {
