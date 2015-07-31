@@ -373,4 +373,12 @@ footer {
         padding-top: 10px;
         padding-bottom: 10px;
     }
+    
+    .news-form-box,
+    .modal-dialog,
+    .modal-content {
+        width: 100%;
+        padding: 0;
+        margin: 2px;
+    }
 }
