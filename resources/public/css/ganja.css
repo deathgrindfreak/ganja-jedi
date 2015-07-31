@@ -119,6 +119,10 @@ nav.navbar {
     cursor: pointer;
 }
 
+.close-button {
+    border: none;
+}
+
 .modal-content {
     padding: 0;
     margin: 0;

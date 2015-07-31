@@ -101,11 +101,6 @@ var NewsBox = React.createClass({displayName: "NewsBox",
             body: '',
             date: ''
         });
-        $('#news-modal').modal('hide');
-    },
-    hideModal: function(e) {
-        e.preventDefault();
-        $('#news-modal').modal('hide');
     },
     render: function() {
         return (
@@ -115,7 +110,7 @@ var NewsBox = React.createClass({displayName: "NewsBox",
                   React.createElement("div", {className: "modal-content"}, 
                     React.createElement("div", {className: "news-form-box"}, 
                       React.createElement("div", null, 
-                      React.createElement("button", {type: "button", className: "close-button", onClick: this.hideModal, "data-dismiss": "modal", "aria-label": "Close"}, React.createElement("span", {"aria-hidden": "true"}, "×"))
+                      React.createElement("button", {type: "button", onClick: this.hideModal, "data-dismiss": "modal", "aria-label": "Close"}, React.createElement("span", {"aria-hidden": "true"}, "×"))
                       ), 
                       React.createElement("div", {className: "modal-body"}, 
                         React.createElement("div", {className: "news-form-box-title"}, 
@@ -135,7 +130,7 @@ var NewsBox = React.createClass({displayName: "NewsBox",
                           ), 
                           React.createElement("div", {className: "right-button-wrapper"}, 
                             React.createElement("div", {className: "right-button"}, 
-                              React.createElement("button", {className: "btn news-btn"}, "Submit")
+                              React.createElement("button", {onClick: this.hideModal, className: "btn news-btn"}, "Submit")
                             )
                           )
                         )

@@ -101,6 +101,11 @@ var NewsBox = React.createClass({
             body: '',
             date: ''
         });
+        $('#news-modal').modal('hide');
+    },
+    hideModal: function(e) {
+        e.preventDefault();
+        $('#news-modal').modal('hide');
     },
     render: function() {
         return (
@@ -110,7 +115,7 @@ var NewsBox = React.createClass({
                   <div className="modal-content">
                     <div className="news-form-box">
                       <div>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <button type="button" className="close-button" onClick={this.hideModal} data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                       </div>
                       <div className="modal-body">
                         <div className="news-form-box-title">
