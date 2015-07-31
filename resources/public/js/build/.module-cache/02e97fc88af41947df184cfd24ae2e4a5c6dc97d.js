@@ -104,18 +104,13 @@ var NewsBox = React.createClass({displayName: "NewsBox",
     },
     render: function() {
         return (
-            React.createElement("div", null, 
-              React.createElement("div", {className: "modal fade", id: "news-modal"}, 
-                React.createElement("div", {className: "modal-dialog"}, 
-                  React.createElement("div", {className: "modal-content"}, 
+            React.createElement("div", {className: "modal fade"}, 
+              React.createElement("div", {className: "modal-dialog"}, 
+                React.createElement("div", {className: "modal-content"}, 
+                  React.createElement("div", {className: "modal-header"}, 
                     React.createElement("div", {className: "news-form-box"}, 
-                      React.createElement("div", null, 
-                        React.createElement("button", {type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close"}, React.createElement("span", {"aria-hidden": "true"}, "×"))
-                      ), 
+                      React.createElement("h3", {className: "modal-title"}, "New News Item"), 
                       React.createElement("div", {className: "modal-body"}, 
-                        React.createElement("div", {className: "news-form-box-title"}, 
-                          React.createElement("h3", {className: "modal-title"}, "New News Item")
-                        ), 
                         React.createElement("form", {onSubmit: this.handleSubmit}, 
                           React.createElement("div", {className: "inputGroup"}, 
                             React.createElement("label", {for: "title"}, "Title:"), 
@@ -135,12 +130,12 @@ var NewsBox = React.createClass({displayName: "NewsBox",
                           )
                         )
                       )
-                    )
+                    ), 
+                    React.createElement(NewsList, {newsItems: this.state.items})
                   )
                 )
-              ), 
-              React.createElement(NewsList, {newsItems: this.state.items})
             )
+          )
         );
     }
 });

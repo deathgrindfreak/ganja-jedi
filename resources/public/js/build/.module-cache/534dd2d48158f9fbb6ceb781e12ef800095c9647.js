@@ -105,32 +105,29 @@ var NewsBox = React.createClass({displayName: "NewsBox",
     render: function() {
         return (
             React.createElement("div", null, 
-              React.createElement("div", {className: "modal fade", id: "news-modal"}, 
+              React.createElement("div", {className: "modal fade"}, 
                 React.createElement("div", {className: "modal-dialog"}, 
                   React.createElement("div", {className: "modal-content"}, 
-                    React.createElement("div", {className: "news-form-box"}, 
-                      React.createElement("div", null, 
-                        React.createElement("button", {type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close"}, React.createElement("span", {"aria-hidden": "true"}, "×"))
-                      ), 
-                      React.createElement("div", {className: "modal-body"}, 
-                        React.createElement("div", {className: "news-form-box-title"}, 
-                          React.createElement("h3", {className: "modal-title"}, "New News Item")
-                        ), 
-                        React.createElement("form", {onSubmit: this.handleSubmit}, 
-                          React.createElement("div", {className: "inputGroup"}, 
-                            React.createElement("label", {for: "title"}, "Title:"), 
-                            React.createElement("input", {className: "form-control", name: "title", onChange: this.onChange, value: this.state.title, placeholder: "Title"})
-                          ), 
-                          React.createElement("div", {className: "inputGroup"}, 
-                            React.createElement("label", {for: "author"}, "Author:"), 
-                            React.createElement("input", {className: "form-control", name: "author", onChange: this.onChange, value: this.state.author, placeholder: "Author"})
-                          ), 
-                          React.createElement("div", {className: "inputGroup"}, 
-                            React.createElement("textarea", {className: "form-control news-area", name: "body", onChange: this.onChange, rows: "5", value: this.state.body, placeholder: "Message ..."})
-                          ), 
-                          React.createElement("div", {className: "right-button-wrapper"}, 
-                            React.createElement("div", {className: "right-button"}, 
-                              React.createElement("button", {className: "btn news-btn"}, "Submit")
+                    React.createElement("div", {className: "modal-header"}, 
+                      React.createElement("div", {className: "news-form-box"}, 
+                        React.createElement("h3", {className: "modal-title"}, "New News Item"), 
+                        React.createElement("div", {className: "modal-body"}, 
+                          React.createElement("form", {onSubmit: this.handleSubmit}, 
+                            React.createElement("div", {className: "inputGroup"}, 
+                              React.createElement("label", {for: "title"}, "Title:"), 
+                              React.createElement("input", {className: "form-control", name: "title", onChange: this.onChange, value: this.state.title, placeholder: "Title"})
+                            ), 
+                            React.createElement("div", {className: "inputGroup"}, 
+                              React.createElement("label", {for: "author"}, "Author:"), 
+                              React.createElement("input", {className: "form-control", name: "author", onChange: this.onChange, value: this.state.author, placeholder: "Author"})
+                            ), 
+                            React.createElement("div", {className: "inputGroup"}, 
+                              React.createElement("textarea", {className: "form-control news-area", name: "body", onChange: this.onChange, rows: "5", value: this.state.body, placeholder: "Message ..."})
+                            ), 
+                            React.createElement("div", {className: "right-button-wrapper"}, 
+                              React.createElement("div", {className: "right-button"}, 
+                                React.createElement("button", {className: "btn news-btn"}, "Submit")
+                              )
                             )
                           )
                         )

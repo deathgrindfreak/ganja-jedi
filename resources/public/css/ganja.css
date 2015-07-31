@@ -92,9 +92,8 @@ nav.navbar {
 }
 
 .news-form-box {
-    margin: 20px auto;
-    padding: 5px 20px 20px 20px;
-    width: 700px;
+    padding: 5px 20px 15px 20px;
+    width: 500px;
     background-color: #efefef;
 }
 
@@ -106,6 +105,28 @@ nav.navbar {
 
 .news-form-box-title h3 {
     display: inline;
+}
+
+.news-header {
+    margin: 0;
+    padding: 0;
+    width: 140px;
+}
+
+.edit-link {
+    float: right;
+    margin-top: 22px;
+    cursor: pointer;
+}
+
+.modal-content {
+    padding: 0;
+    margin: 0;
+    width: 500px;
+}
+
+.modal-dialog {
+    width: 500px;
 }
 
 .inputGroup {
@@ -216,18 +237,28 @@ label {
 
 .form-control.reg-area {
     width: 400px;
-    resize: none;
+    resize: vertical;
+}
+
+.form-control.news-area {
+    resize: vertical;
 }
 
 .btn {
     padding: 5px 10px;
     color: #212121;
+    font-weight: bold;
     background-color: #f47921;
 }
 
-.news-btn {
-    margin-top: 5px;
-    margin-left: 5px;
+.right-button-wrapper {
+    display: table;
+    width: 100%;
+}
+
+.right-button {
+    text-align: right;
+    margin: 5px 5px 0 0;
 }
 
 .register-button {

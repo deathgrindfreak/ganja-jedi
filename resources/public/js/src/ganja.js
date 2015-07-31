@@ -104,28 +104,43 @@ var NewsBox = React.createClass({
     },
     render: function() {
         return (
-          <div>
-            <div className="news-form-box">
-              <div className="news-form-box-title">
-                <h3>New News Item</h3>
+            <div>
+              <div className="modal fade" id="news-modal">
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="news-form-box">
+                      <div>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      </div>
+                      <div className="modal-body">
+                        <div className="news-form-box-title">
+                          <h3 className="modal-title">New News Item</h3>
+                        </div>
+                        <form onSubmit={this.handleSubmit}>
+                          <div className="inputGroup">
+                            <label for="title">Title:</label>
+                            <input className="form-control" name="title" onChange={this.onChange} value={this.state.title} placeholder="Title" />
+                          </div>
+                          <div className="inputGroup">
+                            <label for="author">Author:</label>
+                            <input className="form-control" name="author" onChange={this.onChange} value={this.state.author} placeholder="Author"/>
+                          </div>
+                          <div className="inputGroup">
+                            <textarea className="form-control news-area" name="body" onChange={this.onChange} rows="5" value={this.state.body} placeholder="Message ..."></textarea>
+                          </div>
+                          <div className="right-button-wrapper">
+                            <div className="right-button">
+                              <button className="btn news-btn">Submit</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <form onSubmit={this.handleSubmit}>
-                <div className="inputGroup">
-                  <label for="title">Title:</label>
-                  <input className="form-control" name="title" onChange={this.onChange} value={this.state.title} placeholder="Title" />
-                </div>
-                <div className="inputGroup">
-                  <label for="author">Author:</label>
-                  <input className="form-control" name="author" onChange={this.onChange} value={this.state.author} placeholder="Author"/>
-                </div>
-                <div className="inputGroup">
-                  <textarea className="form-control" name="body" onChange={this.onChange} rows="5" value={this.state.body} placeholder="Message ..."></textarea>
-                </div>
-                <button className="btn news-btn">Submit</button>
-              </form>
+              <NewsList newsItems={this.state.items} />
             </div>
-            <NewsList newsItems={this.state.items} />
-          </div>
         );
     }
 });

@@ -130,7 +130,7 @@ var NewsBox = React.createClass({displayName: "NewsBox",
                           ), 
                           React.createElement("div", {className: "right-button-wrapper"}, 
                             React.createElement("div", {className: "right-button"}, 
-                              React.createElement("button", {className: "btn news-btn"}, "Submit")
+                              React.createElement("button", {className: "btn news-btn close"}, "Submit")
                             )
                           )
                         )

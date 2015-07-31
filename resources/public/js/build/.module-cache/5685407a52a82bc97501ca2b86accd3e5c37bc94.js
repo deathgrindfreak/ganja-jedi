@@ -110,7 +110,7 @@ var NewsBox = React.createClass({displayName: "NewsBox",
                   React.createElement("div", {className: "modal-content"}, 
                     React.createElement("div", {className: "news-form-box"}, 
                       React.createElement("div", null, 
-                        React.createElement("button", {type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close"}, React.createElement("span", {"aria-hidden": "true"}, "×"))
+                        React.createElement("button", {className: "close", "data-dismiss": "modal", "aria-label": "Close"}, React.createElement("span", {"aria-hidden": "true"}, "×"))
                       ), 
                       React.createElement("div", {className: "modal-body"}, 
                         React.createElement("div", {className: "news-form-box-title"}, 
@@ -130,7 +130,7 @@ var NewsBox = React.createClass({displayName: "NewsBox",
                           ), 
                           React.createElement("div", {className: "right-button-wrapper"}, 
                             React.createElement("div", {className: "right-button"}, 
-                              React.createElement("button", {className: "btn news-btn"}, "Submit")
+                              React.createElement("button", {className: "btn news-btn close"}, "Submit")
                             )
                           )
                         )
