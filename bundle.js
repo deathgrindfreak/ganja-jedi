@@ -48,18 +48,15 @@
 
 	var React = __webpack_require__(1);
 	var NewsBox = __webpack_require__(2);
-	//var EditBox = require('./EditBox');
+	var EditBox = __webpack_require__(3);
 
 	// Speed and media match for login dropdown
 	var dropdownSpeed = 200;
 	var mq = window.matchMedia("screen and (max-width: 768px)");
 
-	var aboutText = {
+	var text = {
 	    title: 'About',
-	    initialBody: 'We’re a very friendly family clan that is fortunate to have a loyal core of members.' +
-	                 'We’re very laid back, and ask those who opt in to war to take it very seriously.' +
-	                 'We love ganja, but it is not a requirement for membership.' +
-	                 'We’re all chill here.'
+	    initialBody: 'This is the about me page!'
 	};
 
 	// Dropdown for login
@@ -99,7 +96,7 @@
 	});
 
 	React.render(React.createElement(NewsBox, null), document.getElementById('news-box'));
-	//React.render(<EditBox text={this.aboutText} />, document.getElementById('edit-box'));
+	React.render(React.createElement(EditBox, {text: this.text}), document.getElementById('news-box'));
 
 
 /***/ },
@@ -112,13 +109,31 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {/** @jsx React.DOM */'use strict'
+	/** @jsx React.DOM */'use strict'
 
 	var React = __webpack_require__(1);
 
 	// News box for front page
-	module.export = React.createClass({
-	    displayName: 'NewsBox',
+	modules.exports = React.createClass({displayName: "modules.exports",
+	    render: function() {
+	        var createNewsItem = function(item, index) {
+	            return (
+	                React.createElement("div", {className: "news-section", key: index + item.title}, 
+	                  React.createElement("h3", null, item.title), 
+	                  React.createElement("div", {className: "news-content"}, 
+	                    React.createElement("p", null, item.body), 
+	                    React.createElement("br", null), 
+	                    React.createElement("p", null, item.author), 
+	                    React.createElement("p", null, item.date)
+	                  )
+	                )
+	            );
+	        };
+	        return React.createElement("div", null, this.props.newsItems.map(createNewsItem));
+	    }
+	});
+
+	var NewsBox = React.createClass({displayName: "NewsBox",
 	    getInitialState: function() {
 	        return {
 	            items: [],
@@ -209,41 +224,92 @@
 	    }
 	});
 
-	var NewsList = React.createClass({
-	    displayName: 'NewsList',
-	    render: function() {
-	        var createNewsItem = function(item, index) {
-	            return (
-	                React.createElement("div", {className: "news-section", key: index + item.title}, 
-	                  React.createElement("h3", null, item.title), 
-	                  React.createElement("div", {className: "news-content"}, 
-	                    React.createElement("p", null, item.body), 
-	                    React.createElement("br", null), 
-	                    React.createElement("p", null, item.author), 
-	                    React.createElement("p", null, item.date)
-	                  )
-	                )
-	            );
-	        };
-	        return React.createElement("div", null, this.props.newsItems.map(createNewsItem));
-	    }
-	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)(module)))
+	React.render(React.createElement(NewsBox, null), document.getElementById('news-box'));
+
 
 /***/ },
 /* 3 */
 /***/ function(module, exports) {
 
-	module.exports = function(module) {
-		if(!module.webpackPolyfill) {
-			module.deprecate = function() {};
-			module.paths = [];
-			// module.parent = undefined by default
-			module.children = [];
-			module.webpackPolyfill = 1;
-		}
-		return module;
-	}
+	/** @jsx React.DOM */// Edit box for editing page elements
+	var text = {
+	    title: 'About',
+	    initialBody: 'This is the about me page!'
+	};
+
+	var EditBox = React.createClass({displayName: "EditBox",
+	    getInitialState: function() {
+	        return {
+	            isNormalMode: "true",
+	            body: this.props.text.initialBody
+	        };
+	    },
+	    onClick: function(e) {
+	        e.preventDefault();
+	        var normal = e.target.dataset.normal;
+	        this.setState({isNormalMode: normal});
+	    },
+	    onChange: function(e) {
+	        var itemChange = new Object();
+	        itemChange[e.target.name] = e.target.value;
+	        this.setState(itemChange);
+	    },
+	    editHeader: function() {
+	        if (this.state.isNormalMode === "true") {
+	            return React.createElement("a", {onClick: this.onClick, 
+	                      "data-normal": "false", 
+	                      style: {float: 'right', cursor: 'pointer'}}, 
+	                    "[edit]"
+	                   );
+	        }
+	        return '';
+	    },
+	    bodyText: function() {
+
+	        if (this.state.isNormalMode === "true") {
+	            return (
+	                React.createElement("div", null, 
+	                  React.createElement("div", {
+	                    dangerouslySetInnerHTML: {
+	                      __html: marked(this.state.body)
+	                    }}
+	                  )
+	                )
+	            );
+	        } else {
+	            return (
+	                React.createElement("div", null, 
+	                    React.createElement("textarea", {
+	                      name: "body", 
+	                      onChange: this.onChange, 
+	                      rows: "5", 
+	                      style: {width: '250px'}, 
+	                      value: this.state.body}
+	                    ), 
+	                    React.createElement("button", {"data-normal": "true", onClick: this.onClick}, 
+	                        "Submit"
+	                    )
+	                )
+	            );
+	        }
+	    },
+	    render: function() {
+	        return (
+	            React.createElement("div", null, 
+	                React.createElement("div", {style: {width: '130px'}}, 
+	                    this.editHeader(), 
+	                    React.createElement("h1", null, this.props.text.title)
+	                ), 
+	                React.createElement("div", null, 
+	                    this.bodyText()
+	                )
+	            )
+	        );
+	    }
+	});
+
+	React.render(React.createElement(EditBox, {text: this.text}),
+	    document.getElementById('news-box'));
 
 
 /***/ }

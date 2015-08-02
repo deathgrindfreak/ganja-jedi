@@ -3,8 +3,8 @@ body {
     background-repeat: repeat;
     background-size: auto;
     background-color: #000;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 2.0em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
 }
 
 h1 {
@@ -13,10 +13,6 @@ h1 {
 
 h3 {
     font-size: 1.5em;
-}
-
-p {
-    font-size: .9em;
 }
 
 button {
@@ -28,8 +24,18 @@ button {
     min-width: 100%;
 }
 
-#navbar {
-    font-size: 1.1em;
+.nav-content-wrapper {
+    border: 8px solid #101010;
+    border-radius: 10px;
+}
+
+.navbar {
+    font-size: 1.2em;
+    font-weight: 400;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-radius: 5px 5px 0 0;
+    border: none;
 }
 
 ul.nav a.login-dropdown-toggle,
@@ -60,21 +66,21 @@ nav.navbar {
 
 .content {
     background-color: #212121;
-    padding: 5px;
-    padding-right: 15px;
-    border-radius: 6px;
+    padding: 0 15px 5px 5px;
+    margin-top: 0;
+    border-radius: 0 0 5px 5px;
 }
 
 .page-content {
-    border-radius: 6px;
     background-color: #fff;
-    margin: 5px;
+    margin: 0 5px 5px 5px;
     padding-top: 10px;
     padding-left: 25px;
     padding-right: 25px;
     padding-bottom: 30px;
     height: 100%;
     width: 100%;
+    border-radius: 0 0 5px 5px;
 }
 
 .page-content h3 {
@@ -110,12 +116,12 @@ nav.navbar {
 .news-header {
     margin: 0;
     padding: 0;
-    width: 140px;
+    width: 135px;
 }
 
 .edit-link {
     float: right;
-    margin-top: 22px;
+    margin-top: 15px;
     cursor: pointer;
 }
 
@@ -215,7 +221,15 @@ li#forgot-pass {
 }
 
 .registration {
+    width: 500px;
+    margin: 25px auto 0 auto;
+    padding: 10px 25px 15px 25px;
+    background-color: #efefef;
+}
+
+.registration .input-group {
     width: 100%;
+    margin: 20px 0;
 }
 
 .warning {
@@ -229,21 +243,18 @@ li#forgot-pass {
 
 label {
     display: block;
+    font-size: .9em;
+}
+
+input {
+    font-size: .9em;
 }
 
 .form-control.reg-drop {
     width: 80px;
 }
 
-.form-control.reg-email {
-    width: 300px;
-}
-
-.form-control.reg-area {
-    width: 400px;
-    resize: vertical;
-}
-
+.form-control.reg-area,
 .form-control.news-area {
     resize: vertical;
 }
@@ -251,7 +262,6 @@ label {
 .btn {
     padding: 5px 10px;
     color: #212121;
-    font-weight: bold;
     background-color: #f47921;
 }
 
@@ -266,9 +276,14 @@ label {
 }
 
 .register-button {
-    padding: 5px;
-    margin: 10px 5px;
-    height: 50;
+    display: table;
+    width: 100%;
+}
+
+.reg-button {
+    text-align: right;
+    margin-right: 0;
+    padding: 0;
 }
 
 footer {
@@ -279,6 +294,12 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+    
+    .nav-content-wrapper {
+        border: none;
+        border-radius: 0;
+    }
+
     .container, #navbar, .content, .page-content {
         width: 100%;
     }
@@ -355,18 +376,12 @@ footer {
         border: none;
     }
     
-    input.registration-input {
+    .registration {
         width: 100%;
     }
     
     .registration-textbox {
         width: 100%;
-    }
-    
-    .registration button.btn {
-        width: 100%;
-        padding-left: 0;
-        margin-left: 0;
     }
 
     footer {

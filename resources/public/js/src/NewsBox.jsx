@@ -1,65 +1,10 @@
-// Speed and media match for login dropdown
-var dropdownSpeed = 200;
-var mq = window.matchMedia("screen and (max-width: 768px)");
+'use strict'
 
-// Dropdown for login
-$(function() {
-    var alterDropdown = function() {
-        if (mq.matches) {
-            var drop = $("div.login-dropdown-normal").html();
-            $("div.login-dropdown-normal").empty();
-            $("div.login-dropdown-mobile").append(drop);
-            dropdownSpeed = 350;
-        } else {
-            var dropm = $("div.login-dropdown-mobile").html();
-            $("div.login-dropdown-mobile").empty();
-            $("div.login-dropdown-normal").append(dropm);
-            dropdownSpeed = 200;
-        }
-    };
+var React = require('react');
 
-    // alter the layout at startup
-    alterDropdown();
-
-    // Check if media query is activated
-    mq.addListener(function(changed) {
-        alterDropdown();
-    });
-
-    $("a.login-dropdown-toggle").click(function(event) {
-        event.preventDefault();
-        var dropdown = $("div.login-dropdown");
-
-        if (dropdown.is(":visible")) {
-            dropdown.slideUp(dropdownSpeed);
-        } else {
-            dropdown.slideDown(dropdownSpeed);
-        }
-    });
-});
-
-// TODO Need to move to seperate file
 // News box for front page
-var NewsList = React.createClass({
-    render: function() {
-        var createNewsItem = function(item, index) {
-            return (
-                <div className="news-section" key={index + item.title}>
-                  <h3>{item.title}</h3>
-                  <div className="news-content">
-                    <p>{item.body}</p>
-                    <br />
-                    <p>{item.author}</p>
-                    <p>{item.date}</p>
-                  </div>
-                </div>
-            );
-        };
-        return <div>{this.props.newsItems.map(createNewsItem)}</div>;
-    }
-});
-
-var NewsBox = React.createClass({
+module.export = React.createClass({
+    displayName: 'NewsBox',
     getInitialState: function() {
         return {
             items: [],
@@ -150,31 +95,22 @@ var NewsBox = React.createClass({
     }
 });
 
-React.render(<NewsBox />, document.getElementById('news-box'));
-
-// $(function() {
-//     // Ajax for register page
-//     $('.reg-button').click(function() {
-//         // Array for the inputs
-//         var formInputs = new Array();
-//         // Get the form name
-//         var form = $(this).parent().attr('id');
-//         $('#' + form + ' input').each(function() {
-//             // Get the input value
-//             var inputVal = $(this).val();
-//             // Get the input name
-//             var inputName = $(this).attr('name');
-//             // Add to the array
-//             formInputs[inputName] = inputVal;
-//         });
-//         $.ajax({
-//             url: '/register',
-//             type: 'POST',
-//             data: {
-//                 inputs: formInputs;
-//             },
-//             success: function(data) {
-//             }
-//         });
-//     });
-// });
+var NewsList = React.createClass({
+    displayName: 'NewsList',
+    render: function() {
+        var createNewsItem = function(item, index) {
+            return (
+                <div className="news-section" key={index + item.title}>
+                  <h3>{item.title}</h3>
+                  <div className="news-content">
+                    <p>{item.body}</p>
+                    <br />
+                    <p>{item.author}</p>
+                    <p>{item.date}</p>
+                  </div>
+                </div>
+            );
+        };
+        return <div>{this.props.newsItems.map(createNewsItem)}</div>;
+    }
+});

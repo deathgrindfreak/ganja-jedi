@@ -1,7 +1,7 @@
 (ns ganja-jedi.routes.auth
-  (:require
-   [crypto.password.bcrypt :as pass]
-   [clojure.data.codec.base64 :as b64]))
+  (:require [clojure.data.codec.base64 :as b64]
+            [clojure.string :as str]
+            [crypto.password.bcrypt :as pass]))
 
 ;;; Password Hashing
 
@@ -23,6 +23,6 @@
 
 (defn check-pass
   "Checks if a password is equal to the hashed version"
-  [salt hash pass]
-  (pass/check (str salt pass) hash))
+  [salt pass hash]
+  (pass/check (str salt (str/trim pass)) hash))
 

@@ -8,7 +8,10 @@
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [environ.core :refer [env]]
             [ganja-jedi.routes.home :refer [home-routes]]
-            [ganja-jedi.routes.register :refer [register-routes]]))
+            [ganja-jedi.routes.register :refer [register-routes]]
+            [ganja-jedi.routes.login :refer [login-routes]]
+            [noir.session :as session]
+            [ring.middleware.session.memory :refer [memory-store]]))
 
 (defroutes app-routes
   (ANY "*" []
@@ -20,9 +23,11 @@
 
 (def app
   (-> (routes home-routes
+              login-routes
               register-routes
               app-routes)
-      (wrap-defaults site-defaults)))
+      (wrap-defaults site-defaults)
+      (session/wrap-noir-session {:store (memory-store)})))
 
 (defn -main [& [port]]
   (let [port (Integer. (or port (env :port) 6666))]

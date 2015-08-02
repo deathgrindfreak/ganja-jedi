@@ -5,6 +5,7 @@
 
 ;;; Messages displayed randomly in the <title></title> elements on page load
 (def ^:dynamic *title-messages* ["Unite!"
+                                 "Oh my God!  It's full of stars!"
                                  "Go Go Ganja Rangers!"
                                  "Wake and/or Bake ..."
                                  "VIVA LA GANJA!"])

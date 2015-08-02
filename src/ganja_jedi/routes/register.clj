@@ -1,5 +1,5 @@
 (ns ganja-jedi.routes.register
-  (:require [compojure.core :refer :all]
+  (:require [compojure.core :refer [defroutes GET POST]]
             [ganja-jedi.models.db :as db]
             [ganja-jedi.views.layout :as layout]
             [ganja-jedi.views.register :as register]))

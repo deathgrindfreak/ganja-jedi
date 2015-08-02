@@ -14,7 +14,7 @@
                  [postgresql "9.1-901-1.jdbc4"]
                  [crypto-password "0.1.3"]
                  [org.clojure/data.codec "0.1.0"]
-                 [bouncer "0.3.3"]]
+                 [lib-noir "0.9.9"]]
   :min-lein-version "2.0.0"
   :plugins [[lein-ring "0.8.13"]
             [environ/environ.lein "0.2.1"]]

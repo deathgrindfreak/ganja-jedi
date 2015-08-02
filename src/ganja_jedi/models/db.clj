@@ -1,6 +1,8 @@
 (ns ganja-jedi.models.db
   (:require [clojure.java.jdbc :as jdbc]
-            [environ.core :refer [env]]))
+            [environ.core :refer [env]]
+            [clojure.string :as str]
+            [ganja-jedi.routes.auth :as auth]))
 
 ;;; The environmental variable "DATABASE_URL" must be set with the postgresql url
 (def ^:dynamic *db-url* (env :database-url))
@@ -15,7 +17,7 @@
                        (jdbc/create-table-ddl :users
                                               [:userid "SERIAL PRIMARY KEY"]
                                               [:enabled "BOOLEAN"]
-                                              [:special_admin "BOOLEAN"]
+                                              [:admin "BOOLEAN"]
                                               [:email "TEXT"]
                                               [:village "TEXT"]
                                               [:elder "BOOLEAN"]
@@ -43,10 +45,26 @@
     (create-users-table db-con)
     (create-auth-tokens-table db-con)))
 
+;;; Login
+
+(defn get-user-info
+  "Retrieves the user info based on user email"
+  [email]
+  (jdbc/query *db-url* ["SELECT * FROM users WHERE email=?" (str/trim email)]))
+
 
 ;;; Register page
 
 (defn register-user
   "Inserts a new user"
-  [db-spec user-map]
-  (jdbc/insert! db-spec :users user-map))
+  [user-map]
+  (let [[salt pass] (auth/gen-pass-hash (:password user-map))
+        new-user-map (assoc user-map
+                            :password pass
+                            :salt salt
+                            :enabled true
+                            :admin true
+                            :elder true
+                            :coleader false
+                            :leader false)]
+    (jdbc/insert! *db-url* :users new-user-map)))

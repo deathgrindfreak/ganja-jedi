@@ -1,5 +1,5 @@
 (ns ganja-jedi.routes.home
-  (:require [compojure.core :refer :all]
+  (:require [compojure.core :refer [defroutes GET POST]]
             [ganja-jedi.views.layout :as layout]))
 
 (defroutes home-routes
