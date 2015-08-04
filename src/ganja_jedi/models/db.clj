@@ -26,7 +26,6 @@
                                               [:salt "CHAR(60)"]
                                               [:password "CHAR(60)"])))
 
-
 (defn create-auth-tokens-table
   "Creates the auth_tokens table"
   [db-spec]
@@ -37,6 +36,17 @@
                                               [:token "CHAR(64)"]
                                               [:userid "SERIAL"]
                                               [:expires "DATE"])))
+
+(defn create-news-table
+  "Creates the news table"
+  [db-spec]
+  (jdbc/db-do-commands db-spec
+                       (jdbc/create-table-ddl :news
+                                              [:newsid "SERIAL PRIMARY KEY"]
+                                              [:author "text"]
+                                              [:title "text"]
+                                              [:body "text"]
+                                              [:date "DATE"])))
 
 (defn create-tables
   "Creates all tables"
@@ -59,12 +69,5 @@
   "Inserts a new user"
   [user-map]
   (let [[salt pass] (auth/gen-pass-hash (:password user-map))
-        new-user-map (assoc user-map
-                            :password pass
-                            :salt salt
-                            :enabled true
-                            :admin true
-                            :elder true
-                            :coleader false
-                            :leader false)]
+        new-user-map (assoc user-map :password pass :salt salt)]
     (jdbc/insert! *db-url* :users new-user-map)))

@@ -11,6 +11,7 @@
             [ganja-jedi.routes.register :refer [register-routes]]
             [ganja-jedi.routes.login :refer [login-routes]]
             [noir.session :as session]
+            [noir.validation :refer [wrap-noir-validation]]
             [ring.middleware.session.memory :refer [memory-store]]))
 
 (defroutes app-routes
@@ -26,8 +27,9 @@
               login-routes
               register-routes
               app-routes)
-      (wrap-defaults site-defaults)
-      (session/wrap-noir-session {:store (memory-store)})))
+      (wrap-defaults (assoc site-defaults :session false))
+      (session/wrap-noir-session {:store (memory-store)})
+      (wrap-noir-validation)))
 
 (defn -main [& [port]]
   (let [port (Integer. (or port (env :port) 6666))]
