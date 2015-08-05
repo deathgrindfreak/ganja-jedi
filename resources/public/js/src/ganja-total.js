@@ -5,7 +5,6 @@ var dropdownSpeed = 200;
 var mq = window.matchMedia("screen and (max-width: 768px)");
 
 var aboutText = {
-    title: 'About',
     initialBody: 'We’re a very friendly family clan that is fortunate to have a loyal core of members.' +
                  'We’re very laid back, and ask those who opt in to war to take it very seriously.' +
                  'We love ganja, but it is not a requirement for membership.' +
@@ -115,11 +114,11 @@ var NewsBox = React.createClass({
                         </div>
                         <form onSubmit={this.handleSubmit}>
                           <div className="inputGroup">
-                            <label for="title">Title:</label>
+                            <label htmlFor="title">Title:</label>
                             <input className="form-control" name="title" onChange={this.onChange} value={this.state.title} placeholder="Title" />
                           </div>
                           <div className="inputGroup">
-                            <label for="author">Author:</label>
+                            <label htmlFor="author">Author:</label>
                             <input className="form-control" name="author" onChange={this.onChange} value={this.state.author} placeholder="Author"/>
                           </div>
                           <div className="inputGroup">
@@ -127,7 +126,7 @@ var NewsBox = React.createClass({
                           </div>
                           <div className="right-button-wrapper">
                             <div className="right-button">
-                              <button className="btn news-btn">Submit</button>
+                              <button className="btn news-btn orange-btn">Submit</button>
                             </div>
                           </div>
                         </form>
@@ -236,5 +235,7 @@ var EditBox = React.createClass({
     }
 });
 
-React.render(<NewsBox />, document.getElementById('news-box'));
-React.render(<EditBox text={this.aboutText} />, document.getElementById('edit-box'));
+$(document).ready(function() {
+    React.render(<NewsBox />, document.getElementById('news-box'));
+    React.render(<EditBox text={this.aboutText} />, document.getElementById('edit-box'));
+});

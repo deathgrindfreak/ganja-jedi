@@ -5,6 +5,7 @@ var dropdownSpeed = 200;
 var mq = window.matchMedia("screen and (max-width: 768px)");
 
 var aboutText = {
+    title: 'About',
     initialBody: 'We’re a very friendly family clan that is fortunate to have a loyal core of members.' +
                  'We’re very laid back, and ask those who opt in to war to take it very seriously.' +
                  'We love ganja, but it is not a requirement for membership.' +
@@ -237,5 +238,5 @@ var EditBox = React.createClass({
 
 $(document).ready(function() {
     React.render(React.createElement(NewsBox, null), document.getElementById('news-box'));
-    React.render(React.createElement(EditBox, {text: this.aboutText}), document.getElementById('edit-box'));
+    React.render(React.createElement(EditBox, {text: this.aboutText}), document.getElementById('news-box'));
 });

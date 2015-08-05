@@ -5,6 +5,7 @@ var dropdownSpeed = 200;
 var mq = window.matchMedia("screen and (max-width: 768px)");
 
 var aboutText = {
+    title: 'About',
     initialBody: 'We’re a very friendly family clan that is fortunate to have a loyal core of members.' +
                  'We’re very laid back, and ask those who opt in to war to take it very seriously.' +
                  'We love ganja, but it is not a requirement for membership.' +
@@ -114,11 +115,11 @@ var NewsBox = React.createClass({
                         ), 
                         React.createElement("form", {onSubmit: this.handleSubmit}, 
                           React.createElement("div", {className: "inputGroup"}, 
-                            React.createElement("label", {htmlFor: "title"}, "Title:"), 
+                            React.createElement("label", {for: "title"}, "Title:"), 
                             React.createElement("input", {className: "form-control", name: "title", onChange: this.onChange, value: this.state.title, placeholder: "Title"})
                           ), 
                           React.createElement("div", {className: "inputGroup"}, 
-                            React.createElement("label", {htmlFor: "author"}, "Author:"), 
+                            React.createElement("label", {for: "author"}, "Author:"), 
                             React.createElement("input", {className: "form-control", name: "author", onChange: this.onChange, value: this.state.author, placeholder: "Author"})
                           ), 
                           React.createElement("div", {className: "inputGroup"}, 

@@ -237,5 +237,5 @@ var EditBox = React.createClass({
 
 $(document).ready(function() {
     React.render(React.createElement(NewsBox, null), document.getElementById('news-box'));
-    React.render(React.createElement(EditBox, {text: this.aboutText}), document.getElementById('edit-box'));
+    React.render(React.createElement(EditBox, {text: this.aboutText}), document.getElementById('news-box'));
 });

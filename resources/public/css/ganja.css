@@ -36,6 +36,11 @@ button {
     margin-bottom: 0;
     border-radius: 5px 5px 0 0;
     border: none;
+    background-color: #121212;
+    background-image: -webkit-linear-gradient(top, #343434, #121212);
+    background-image: -moz-linear-gradient(top, #343434, #121212);
+    background-image: -o-linear-gradient(top, #343434, #121212);
+    background-image: linear-gradient(top, #343434, #121212);
 }
 
 ul.nav a.login-dropdown-toggle,
@@ -66,10 +71,6 @@ nav.navbar {
 
 .login-button {
     padding: 8px 10px 0 0;
-}
-
-.btn-default {
-    background-color: #cdcdcd;
 }
 
 .content {
@@ -267,10 +268,23 @@ input {
     resize: vertical;
 }
 
-.btn {
+.orange-btn {
     padding: 5px 10px;
     color: #212121;
     background-color: #f47921;
+}
+
+.btn-group .btn-default {
+    color: #efefef;
+    background-color: #cdcdcd;
+    border-color: #111;
+    background-image: -webkit-linear-gradient(top, #333, #111);
+    background-image: -moz-linear-gradient(top, #333, #111);
+    background-image: -o-linear-gradient(top, #333, #111);
+    background-image: linear-gradient(top, #333, #111);
+    //-webkit-box-shadow: 0 0 0 rgba(0, 0, 0, .175);
+    //box-shadow: 0 0 0 rgba(0, 0, 0, .175);
+    box-shadow: 0 1px 1px #555, 0 1px 1px rgba(0, 0, 0, 0.25) inset;
 }
 
 .right-button-wrapper {
