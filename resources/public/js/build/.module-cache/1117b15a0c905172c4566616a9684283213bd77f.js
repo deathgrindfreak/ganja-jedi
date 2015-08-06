@@ -78,20 +78,27 @@ var NewsBox = React.createClass({
     },
     handleSubmit: function(e) {
         e.preventDefault();
+        var newItem = this.state.items;
         var tDate = this.getTodaysDate();
+        newItem.unshift({
+            title: this.state.title,
+            author: this.state.author,
+            body: this.state.body,
+            date: this.tDate
+        });
 
         // Submit the new news post
         $.ajax({
             url: "/news",
             data: {
                 title: this.state.title,
+                author: this.state.author,
                 body: this.state.body,
-                date: tDate
+                date: this.tDate
             },
             type: "POST",
             dataType: "json",
             success: function(json) {
-                this.setState({author: json.author});
                 console.log("success: " + json);
             },
             error: function(xhr, status, error) {
@@ -99,14 +106,6 @@ var NewsBox = React.createClass({
                 console.log("error: " + error);
                 console.dir(xhr);
             }
-        });
-
-        var newItem = this.state.items;
-        newItem.unshift({
-            title: this.state.title,
-            author: this.state.author,
-            body: this.state.body,
-            date: tDate
         });
 
         this.setState({
@@ -142,7 +141,11 @@ var NewsBox = React.createClass({
                             React.createElement("input", {className: "form-control", name: "title", onChange: this.onChange, value: this.state.title, placeholder: "Title"})
                           ), 
                           React.createElement("div", {className: "inputGroup"}, 
-                            React.createElement("textarea", {className: "form-control news-area", name: "body", onChange: this.onChange, rows: "10", value: this.state.body, placeholder: "Message ..."})
+                            React.createElement("label", {htmlFor: "author"}, "Author:"), 
+                            React.createElement("input", {className: "form-control", name: "author", onChange: this.onChange, value: this.state.author, placeholder: "Author"})
+                          ), 
+                          React.createElement("div", {className: "inputGroup"}, 
+                            React.createElement("textarea", {className: "form-control news-area", name: "body", onChange: this.onChange, rows: "5", value: this.state.body, placeholder: "Message ..."})
                           ), 
                           React.createElement("div", {className: "right-button-wrapper"}, 
                             React.createElement("div", {className: "right-button"}, 

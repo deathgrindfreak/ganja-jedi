@@ -2,6 +2,7 @@
   (:require [clojure.java.jdbc :as jdbc]
             [environ.core :refer [env]]
             [clojure.string :as str]
+            [ganja-jedi.util.time :as tutil]
             [ganja-jedi.routes.auth :as auth]))
 
 ;;; The environmental variable "DATABASE_URL" must be set with the postgresql url
@@ -71,3 +72,12 @@
   (let [[salt pass] (auth/gen-pass-hash (:password user-map))
         new-user-map (assoc user-map :password pass :salt salt)]
     (jdbc/insert! *db-url* :users new-user-map)))
+
+
+;;; News items
+
+(defn save-news
+  "Inserts a new news item"
+  [news-map]
+  (let [timestamp (tutil/format-sql-timestamp (:date news-map))]
+    (jdbc/insert! *db-url* :news (assoc news-map :date timestamp))))
