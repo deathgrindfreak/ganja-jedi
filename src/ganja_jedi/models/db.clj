@@ -85,4 +85,4 @@
 (defn get-news
   "Get all news items"
   []
-  (jdbc/query *db-url* ["SELECT * FROM news"]))
+  (jdbc/query *db-url* ["SELECT * FROM news ORDER BY newsid DESC"]))
