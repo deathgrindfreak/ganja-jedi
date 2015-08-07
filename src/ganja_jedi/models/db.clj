@@ -81,3 +81,8 @@
   [news-map]
   (let [timestamp (tutil/format-sql-timestamp (:date news-map))]
     (jdbc/insert! *db-url* :news (assoc news-map :date timestamp))))
+
+(defn get-news
+  "Get all news items"
+  []
+  (jdbc/query *db-url* ["SELECT * FROM news"]))

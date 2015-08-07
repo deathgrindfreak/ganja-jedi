@@ -19,6 +19,12 @@ button {
     font-size: .9em;
 }
 
+hr {
+    border: none;
+    height: 3px;
+    background-color: #cdcdcd;
+}
+
 .banner {
     max-width: 100%;
     min-width: 100%;
@@ -95,6 +101,10 @@ nav.navbar {
 .page-content h3 {
     margin-top: 25px;
     margin-bottom: 15px;
+}
+
+.loading {
+    margin: 0 auto;
 }
 
 .news-section {
