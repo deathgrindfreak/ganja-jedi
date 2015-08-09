@@ -86,3 +86,8 @@
   "Get all news items"
   []
   (jdbc/query *db-url* ["SELECT * FROM news ORDER BY newsid DESC"]))
+
+(defn delete-news-item
+  "Deletes a news item"
+  [id]
+  (jdbc/delete! *db-url* :news ["newsid = ?" id]))

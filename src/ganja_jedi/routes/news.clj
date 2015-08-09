@@ -24,6 +24,13 @@
 
           ;; Return the currently logged in user
           (json/write-str {:author village})))
-  (DELETE "/news" [newsid]
-          (println "newsid: " newsid)
-          (json/write-str {:data "balls"})))
+  (DELETE "/news" [item]
+          ;; Make sure that the author is the same as the one logged in
+          (if (= (str/trim (:author item))
+                   (session/get :village))
+            (let [id (Integer/parseInt (:newsid item))
+                  retcode (first (db/delete-news-item id))]
+              (if (> retcode 0)
+                (json/write-str {:success "success"})
+                (json/write-str {:success "failure"})))
+            (json/write-str {:success "login"}))))
