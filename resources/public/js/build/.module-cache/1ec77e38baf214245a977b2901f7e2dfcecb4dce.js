@@ -73,41 +73,8 @@ var NewsBox = React.createClass({
             dataType: "json",
             cache: false,
             success: function(data) {
-                // Add handler functions for delete button
-                data.map(function(item) {
-                    item.handleDelete = function(e) {
-                        e.preventDefault();
-
-                        // Delete from db
-                        $.ajax({
-                            url: "/news",
-                            cache: false,
-                            data: {
-                                newsid: e.target.dataset.newsid
-                            },
-                            type: "DELETE",
-                            dataType: "json",
-                            success: function(data) {
-                                console.log("return from delete: " + data.toSource());
-                            }.bind(this),
-                            error: function(xhr, status, error) {
-                                console.log("status: " + status);
-                                console.log("error: " + error);
-                                console.dir(xhr);
-                            }.bind(this)
-                        });
-
-                        // Ensure that the item exists, then remove it and update state
-                        var ind = this.state.items.indexOf(item);
-                        var newItems = this.state.items;
-
-                        if (ind > -1) {
-                            newItems.splice(ind, 1);
-                            this.setState({items: newItems});
-                        }
-                    }.bind(this);
-                }.bind(this));
-                this.setState({items: data });
+                this.setState({items: data});
+                console.log("success: " + data);
             }.bind(this),
             error: function(xhr, status, error) {
                 console.log("status: " + status);
@@ -148,8 +115,8 @@ var NewsBox = React.createClass({
             type: "POST",
             dataType: "json",
             success: function(json) {
-                console.log("Author: " + json.author);
                 this.setState({author: json.author});
+                console.log("success: " + json);
             }.bind(this),
             error: function(xhr, status, error) {
                 console.log("status: " + status);
@@ -163,11 +130,7 @@ var NewsBox = React.createClass({
             title: this.state.title,
             author: this.state.author,
             body: this.state.body,
-            date: tDate,
-            handleDelete: function(e) {
-                e.preventDefault();
-                console.log(e.target.dataset.newsid);
-            }
+            date: tDate
         });
 
         this.setState({
@@ -175,8 +138,7 @@ var NewsBox = React.createClass({
             title: '',
             author: '',
             body: '',
-            date: '',
-            handleDelete: ''
+            date: ''
         });
         $('#news-modal').modal('hide');
     },
@@ -225,12 +187,18 @@ var NewsBox = React.createClass({
 
 var NewsList = React.createClass({
     displayName: 'NewsList',
+    handleDelete: function(e) {
+        e.preventDefault();
+        console.log(this.props.newsItems.toSource());
+        console.log("id: " + this.props.newsItems.newsid);
+        console.log("name: " + this.props.newsItems.author);
+    },
     render: function() {
         var createNewsItem = function(item, index) {
             return (
                 React.createElement("div", {className: "news-section", key: index + item.title}, 
                   React.createElement("div", null, 
-                    React.createElement("button", {type: "button", className: "close-button news-delete", onClick: item.handleDelete, "data-newsid": item.newsid, "aria-label": "Close"}, React.createElement("span", {"aria-hidden": "true"}, "×")), 
+                    React.createElement("button", {type: "button", className: "close-button news-delete", onClick: this.handleDelete, "data-id": this.items.newsid, "aria-label": "Close"}, React.createElement("span", {"aria-hidden": "true"}, "×")), 
                     React.createElement("h3", null, item.title)
                   ), 
                   React.createElement("div", {className: "news-content"}, 
@@ -245,7 +213,7 @@ var NewsList = React.createClass({
                   )
                 )
             );
-        };
+        }.bind(this);
         return React.createElement("div", null, this.props.newsItems.map(createNewsItem));
     }
 });

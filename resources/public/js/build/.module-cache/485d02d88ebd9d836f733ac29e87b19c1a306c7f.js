@@ -78,33 +78,15 @@ var NewsBox = React.createClass({
                     item.handleDelete = function(e) {
                         e.preventDefault();
 
-                        // Delete from db
-                        $.ajax({
-                            url: "/news",
-                            cache: false,
-                            data: {
-                                newsid: e.target.dataset.newsid
-                            },
-                            type: "DELETE",
-                            dataType: "json",
-                            success: function(data) {
-                                console.log("return from delete: " + data.toSource());
-                            }.bind(this),
-                            error: function(xhr, status, error) {
-                                console.log("status: " + status);
-                                console.log("error: " + error);
-                                console.dir(xhr);
-                            }.bind(this)
-                        });
-
-                        // Ensure that the item exists, then remove it and update state
                         var ind = this.state.items.indexOf(item);
-                        var newItems = this.state.items;
 
                         if (ind > -1) {
-                            newItems.splice(ind, 1);
+                            var newItems = this.state.items.remove(ind);
+                            console.log("newItems: " + newItems.toSource());
+                            console.log("items: " + item.toSource());
                             this.setState({items: newItems});
                         }
+                        console.log(e.target.dataset.newsid);
                     }.bind(this);
                 }.bind(this));
                 this.setState({items: data });
@@ -186,39 +168,39 @@ var NewsBox = React.createClass({
     },
     render: function() {
         return (
-            <div>
-              <div className="modal fade" id="news-modal">
-                <div className="modal-dialog">
-                  <div className="modal-content">
-                    <div className="news-form-box">
-                      <div>
-                        <button type="button" className="close-button" onClick={this.hideModal} data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      </div>
-                      <div className="modal-body">
-                        <div className="news-form-box-title">
-                          <h3 className="modal-title">New News Item</h3>
-                        </div>
-                        <form onSubmit={this.handleSubmit}>
-                          <div className="inputGroup">
-                            <label htmlFor="title">Title:</label>
-                            <input className="form-control" name="title" onChange={this.onChange} value={this.state.title} placeholder="Title" />
-                          </div>
-                          <div className="inputGroup">
-                            <textarea className="form-control news-area" name="body" onChange={this.onChange} rows="10" value={this.state.body} placeholder="Message ..."></textarea>
-                          </div>
-                          <div className="right-button-wrapper">
-                            <div className="right-button">
-                              <button className="btn news-btn orange-btn">Submit</button>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <NewsList newsItems={this.state.items} />
-            </div>
+            React.createElement("div", null, 
+              React.createElement("div", {className: "modal fade", id: "news-modal"}, 
+                React.createElement("div", {className: "modal-dialog"}, 
+                  React.createElement("div", {className: "modal-content"}, 
+                    React.createElement("div", {className: "news-form-box"}, 
+                      React.createElement("div", null, 
+                        React.createElement("button", {type: "button", className: "close-button", onClick: this.hideModal, "data-dismiss": "modal", "aria-label": "Close"}, React.createElement("span", {"aria-hidden": "true"}, "×"))
+                      ), 
+                      React.createElement("div", {className: "modal-body"}, 
+                        React.createElement("div", {className: "news-form-box-title"}, 
+                          React.createElement("h3", {className: "modal-title"}, "New News Item")
+                        ), 
+                        React.createElement("form", {onSubmit: this.handleSubmit}, 
+                          React.createElement("div", {className: "inputGroup"}, 
+                            React.createElement("label", {htmlFor: "title"}, "Title:"), 
+                            React.createElement("input", {className: "form-control", name: "title", onChange: this.onChange, value: this.state.title, placeholder: "Title"})
+                          ), 
+                          React.createElement("div", {className: "inputGroup"}, 
+                            React.createElement("textarea", {className: "form-control news-area", name: "body", onChange: this.onChange, rows: "10", value: this.state.body, placeholder: "Message ..."})
+                          ), 
+                          React.createElement("div", {className: "right-button-wrapper"}, 
+                            React.createElement("div", {className: "right-button"}, 
+                              React.createElement("button", {className: "btn news-btn orange-btn"}, "Submit")
+                            )
+                          )
+                        )
+                      )
+                    )
+                  )
+                )
+              ), 
+              React.createElement(NewsList, {newsItems: this.state.items})
+            )
         );
     }
 });
@@ -228,25 +210,25 @@ var NewsList = React.createClass({
     render: function() {
         var createNewsItem = function(item, index) {
             return (
-                <div className="news-section" key={index + item.title}>
-                  <div>
-                    <button type="button" className="close-button news-delete" onClick={item.handleDelete} data-newsid={item.newsid} aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h3>{item.title}</h3>
-                  </div>
-                  <div className="news-content">
-                    <div
-                      dangerouslySetInnerHTML={{
+                React.createElement("div", {className: "news-section", key: index + item.title}, 
+                  React.createElement("div", null, 
+                    React.createElement("button", {type: "button", className: "close-button news-delete", onClick: item.handleDelete, "data-newsid": item.newsid, "aria-label": "Close"}, React.createElement("span", {"aria-hidden": "true"}, "×")), 
+                    React.createElement("h3", null, item.title)
+                  ), 
+                  React.createElement("div", {className: "news-content"}, 
+                    React.createElement("div", {
+                      dangerouslySetInnerHTML: {
                           __html: marked(item.body)
                       }}
-                    />
-                    <br />
-                    <p>{item.author}</p>
-                    <p>{item.date}</p>
-                  </div>
-                </div>
+                    ), 
+                    React.createElement("br", null), 
+                    React.createElement("p", null, item.author), 
+                    React.createElement("p", null, item.date)
+                  )
+                )
             );
         };
-        return <div>{this.props.newsItems.map(createNewsItem)}</div>;
+        return React.createElement("div", null, this.props.newsItems.map(createNewsItem));
     }
 });
 
@@ -272,11 +254,11 @@ var EditBox = React.createClass({
     },
     editHeader: function() {
         if (this.state.isNormalMode === "true") {
-            return <a onClick={this.onClick}
-                      data-normal="false"
-                      style={{float: 'right', cursor: 'pointer'}}>
-                    [edit]
-                   </a>;
+            return React.createElement("a", {onClick: this.onClick, 
+                      "data-normal": "false", 
+                      style: {float: 'right', cursor: 'pointer'}}, 
+                    "[edit]"
+                   );
         }
         return '';
     },
@@ -284,47 +266,47 @@ var EditBox = React.createClass({
 
         if (this.state.isNormalMode === "true") {
             return (
-                <div>
-                  <div
-                    dangerouslySetInnerHTML={{
+                React.createElement("div", null, 
+                  React.createElement("div", {
+                    dangerouslySetInnerHTML: {
                       __html: marked(this.state.body)
                     }}
-                  />
-                </div>
+                  )
+                )
             );
         } else {
             return (
-                <div>
-                    <textarea
-                      name="body"
-                      onChange={this.onChange}
-                      rows="5"
-                      style={{width: '250px'}}
-                      value={this.state.body}>
-                    </textarea>
-                    <button data-normal="true" onClick={this.onClick}>
-                        Submit
-                    </button>
-                </div>
+                React.createElement("div", null, 
+                    React.createElement("textarea", {
+                      name: "body", 
+                      onChange: this.onChange, 
+                      rows: "5", 
+                      style: {width: '250px'}, 
+                      value: this.state.body}
+                    ), 
+                    React.createElement("button", {"data-normal": "true", onClick: this.onClick}, 
+                        "Submit"
+                    )
+                )
             );
         }
     },
     render: function() {
         return (
-            <div>
-                <div style={{width: '130px'}}>
-                    {this.editHeader()}
-                    <h1>{this.props.text.title}</h1>
-                </div>
-                <div>
-                    {this.bodyText()}
-                </div>
-            </div>
+            React.createElement("div", null, 
+                React.createElement("div", {style: {width: '130px'}}, 
+                    this.editHeader(), 
+                    React.createElement("h1", null, this.props.text.title)
+                ), 
+                React.createElement("div", null, 
+                    this.bodyText()
+                )
+            )
         );
     }
 });
 
 $(document).ready(function() {
-    React.render(<NewsBox />, document.getElementById('news-box'));
-    React.render(<EditBox text={this.aboutText} />, document.getElementById('edit-box'));
+    React.render(React.createElement(NewsBox, null), document.getElementById('news-box'));
+    React.render(React.createElement(EditBox, {text: this.aboutText}), document.getElementById('edit-box'));
 });

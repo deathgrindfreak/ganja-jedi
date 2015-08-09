@@ -1,6 +1,6 @@
 (ns ganja-jedi.routes.news
   (:require [clojure.string :as str]
-            [compojure.core :refer [defroutes GET POST]]
+            [compojure.core :refer [defroutes GET POST DELETE PUT]]
             [ganja-jedi.models.db :as db]
             [clojure.data.json :as json]
             [noir.session :as session]
@@ -23,4 +23,7 @@
           (db/save-news (assoc params :author village))
 
           ;; Return the currently logged in user
-          (json/write-str {:author village}))))
+          (json/write-str {:author village})))
+  (DELETE "/news" [newsid]
+          (println "newsid: " newsid)
+          (json/write-str {:data "balls"})))
