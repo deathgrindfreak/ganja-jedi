@@ -198,7 +198,7 @@ var NewsBox = React.createClass({
                     this.setState({items: newItems});
                 }
             }
-        });
+        }.bind(this));
 
         this.setState({
             items: newItem,

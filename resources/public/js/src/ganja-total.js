@@ -68,6 +68,8 @@ var NewsBox = React.createClass({
             dataType: "json",
             cache: false,
             success: function(data) {
+
+                // TODO need to add an alert prompting user
                 // Add handler functions for delete button
                 data.map(function(item) {
                     item.handleDelete = function(e) {
@@ -196,7 +198,7 @@ var NewsBox = React.createClass({
                     this.setState({items: newItems});
                 }
             }
-        }.bind(this));
+        });
 
         this.setState({
             items: newItem,
